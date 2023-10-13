@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- `test_project_toml_formatting` has been removed.
+- `test_project_toml_formatting` has been removed. ([#209](https://github.com/JuliaTesting/Aqua.jl/pull/209))
 
 
 ## [0.7.3] - 2023-09-25
