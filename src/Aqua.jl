@@ -18,7 +18,6 @@ include("exports.jl")
 include("project_extras.jl")
 include("stale_deps.jl")
 include("deps_compat.jl")
-include("project_toml_formatting.jl")
 include("piracy.jl")
 
 """
@@ -32,7 +31,6 @@ Run following tests in isolated testset:
 * [`test_project_extras(testtarget)`](@ref test_project_extras)
 * [`test_stale_deps(testtarget)`](@ref test_stale_deps)
 * [`test_deps_compat(testtarget)`](@ref test_deps_compat)
-* [`test_project_toml_formatting(testtarget)`](@ref test_project_toml_formatting)
 * [`test_piracy(testtarget)`](@ref test_piracy)
 
 The keyword argument `\$x` (e.g., `ambiguities`) can be used to
@@ -47,7 +45,6 @@ passed to `\$x` to specify the keyword arguments for `test_\$x`.
 - `project_extras = true`
 - `stale_deps = true`
 - `deps_compat = true`
-- `project_toml_formatting = true`
 - `piracy = true`
 """
 function test_all(
@@ -58,7 +55,6 @@ function test_all(
     project_extras = true,
     stale_deps = true,
     deps_compat = true,
-    project_toml_formatting = true,
     piracy = true,
 )
     @testset "Method ambiguity" begin
@@ -89,11 +85,6 @@ function test_all(
     @testset "Compat bounds" begin
         if deps_compat !== false
             test_deps_compat(testtarget; askwargs(deps_compat)...)
-        end
-    end
-    @testset "Project.toml formatting" begin
-        if project_toml_formatting !== false
-            test_project_toml_formatting(testtarget; askwargs(project_toml_formatting)...)
         end
     end
     @testset "Piracy" begin
