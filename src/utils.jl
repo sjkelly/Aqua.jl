@@ -84,27 +84,6 @@ function checked_repr(obj)
     return code
 end
 
-
-
-function get_stdlib_list()
-    @static if VERSION >= v"1.4-"
-        result = Pkg.Types.stdlibs()
-    elseif VERSION >= v"1.1-"
-        result = Pkg.Types.stdlib()
-    else
-        result = Pkg.Types.gather_stdlib_uuids()
-    end
-
-    @static if VERSION >= v"1.8-"
-        # format: Dict{Base.UUID, Tuple{String, Union{Nothing, VersionNumber}}}
-        libs = [PkgId(first(entry), first(last(entry))) for entry in result]
-    else
-        # format Dict{Base.UUID, String}
-        libs = [PkgId(first(entry), last(entry)) for entry in result]
-    end
-    return libs
-end
-
 const _project_key_order = [
     "name",
     "uuid",
