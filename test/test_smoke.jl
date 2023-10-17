@@ -6,6 +6,7 @@ using Aqua
 Aqua.test_all(
     Aqua;
     stale_deps = (; ignore = [:Compat]),  # conditionally loaded
+    deps_compat = VERSION <= v"1.3-" ? (; ignore = [:Test]) : true,
 )
 
 # test everything else
